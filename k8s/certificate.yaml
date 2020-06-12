@@ -1,0 +1,20 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+    name: pavelsemchenko-com-tls
+spec:
+    secretName: pavelsemchenko-com-tls
+    issuerRef:
+        name: letsencrypt-prod
+        kind: ClusterIssuer
+    commonName: pavelsemchenko.com
+    dnsNames:
+        - pavelsemchenko.com
+        - www.pavelsemchenko.com
+    acme:
+        config:
+            - http01:
+                ingressClass: nginx
+              domains:
+                - pavelsemchenko.com
+                - www.pavelsemchenko.com
